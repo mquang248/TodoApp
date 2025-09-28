@@ -2,6 +2,22 @@
 
 A beautiful, feature-rich task management application built with React, Node.js, and MongoDB. Organize your life with an intuitive Kanban board, smart scheduling, and powerful productivity features.
 
+## Live Demo
+
+**Try the app now:** [https://todo-appzc.vercel.app/](https://todo-appzc.vercel.app/)
+
+### Test Accounts
+
+For quick testing, you can use these pre-configured accounts:
+
+| Username | Email | Password | Role |
+|----------|-------|----------|------|
+| `testuser1` | `test1@example.com` | `123456` | Test User |
+| `testuser2` | `test2@example.com` | `123456` | Test User |
+| `admin` | `admin@example.com` | `admin123` | Admin |
+
+**Note:** These are test accounts with pre-verified emails. No OTP verification required.
+
 ## Features
 
 ### Smart Task Management
@@ -80,7 +96,14 @@ A beautiful, feature-rich task management application built with React, Node.js,
    npm run dev
    ```
 
-5. **Open your browser**
+5. **Create test accounts (optional)**
+   ```bash
+   # Create pre-configured test accounts
+   cd backend
+   npm run create-test-users
+   ```
+
+6. **Open your browser**
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:5000
 
@@ -88,6 +111,13 @@ A beautiful, feature-rich task management application built with React, Node.js,
 
 ### Getting Started
 
+#### Option 1: Use Test Accounts (Quick Start)
+1. **Login with test account**
+   - Username: `testuser1`
+   - Password: `123456`
+   - No email verification required
+
+#### Option 2: Create New Account
 1. **Create Your Account**
    - Click "Register" to create a new account
    - Verify your email with the OTP code
@@ -223,6 +253,31 @@ A beautiful, feature-rich task management application built with React, Node.js,
 - CDN for global performance
 - Monitoring and analytics
 
+## Development & Testing
+
+### Test Accounts Setup
+For development and testing, you can create pre-configured test accounts:
+
+```bash
+# Create test accounts
+cd backend
+npm run create-test-users
+
+# Test database connection
+npm run test-connection
+```
+
+### Test Accounts Available
+- **testuser1** / `123456` - Basic test user
+- **testuser2** / `123456` - Secondary test user  
+- **admin** / `admin123` - Admin test user
+
+### Development Features
+- Pre-verified email accounts (no OTP required)
+- Simple passwords for easy testing
+- Ready-to-use test data
+- Database connection testing
+
 ## Contributing
 
 We welcome contributions! Please feel free to submit a Pull Request.
@@ -231,7 +286,7 @@ We welcome contributions! Please feel free to submit a Pull Request.
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test thoroughly
+4. Test thoroughly with test accounts
 5. Submit a pull request
 
 ## License
