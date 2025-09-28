@@ -16,6 +16,7 @@
     }
   ],
   "env": {
-    "REACT_APP_API_URL": "https://todobackend-dj5n.onrender.com/"
+    "REACT_APP_API_URL": "https://todobackend-dj5n.onrender.com/api",
+    "CI": "false"
   }
 }
