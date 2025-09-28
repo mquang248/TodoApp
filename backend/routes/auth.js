@@ -86,7 +86,10 @@ router.post('/register', [
 
     // Send OTP via email
     try {
-      await emailService.sendOTP(email, otpCode, 'registration');
+      const emailResult = await emailService.sendOTP(email, otpCode, 'registration');
+      if (emailResult.fallback) {
+        console.log('Email service using fallback mode');
+      }
     } catch (emailError) {
       console.error('Email sending failed:', emailError);
       // Don't fail registration if email fails, but log it
@@ -317,7 +320,15 @@ router.post('/forgot-password', [
     await otp.save();
 
     // Send OTP via email
-    await emailService.sendOTP(email, otpCode, 'password_reset');
+    try {
+      const emailResult = await emailService.sendOTP(email, otpCode, 'password_reset');
+      if (emailResult.fallback) {
+        console.log('Email service using fallback mode for password reset');
+      }
+    } catch (emailError) {
+      console.error('Email sending failed:', emailError);
+      // Don't fail password reset if email fails, but log it
+    }
 
     res.json({
       success: true,
