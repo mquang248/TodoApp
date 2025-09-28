@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200 dark:border-dark-700;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-darkBg-primary dark:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* Optimize for theme switching */
+    will-change: background-color, color;
+  }
+  
+  /* Optimize rendering for theme changes */
+  html {
+    /* Prevent layout shifts during theme changes */
+    contain: layout style;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent-orange hover:bg-primary-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-150;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 dark:bg-darkBg-tertiary dark:hover:bg-dark-600 text-gray-900 dark:text-white font-medium py-2 px-4 rounded-lg transition-colors duration-150;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-darkBg-tertiary rounded-xl shadow-soft border border-gray-200 dark:border-dark-700;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 dark:border-dark-700 rounded-lg bg-white dark:bg-darkBg-tertiary text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-transparent;
+  }
+  
+  .sidebar-item {
+    @apply flex items-center justify-between px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-darkBg-tertiary transition-colors duration-150 cursor-pointer;
+  }
+  
+  .sidebar-item.active {
+    @apply bg-primary-100 dark:bg-darkBg-tertiary text-primary-700 dark:text-accent-orange;
+  }
+  
+  .sidebar-card {
+    @apply relative p-3 rounded-lg cursor-pointer transition-all duration-150 hover:shadow-medium bg-white dark:bg-darkBg-tertiary shadow-soft min-h-[80px] border border-gray-200 dark:border-dark-700;
+  }
+  
+  .sidebar-fixed {
+    @apply fixed left-0 top-0 w-80 h-screen z-10 bg-white dark:bg-darkBg-secondary border-r border-gray-200 dark:border-dark-700 flex flex-col;
+  }
+  
+  .sidebar-card.active {
+    @apply bg-blue-50 dark:bg-darkBg-tertiary shadow-soft border-blue-200 dark:border-accent-orange;
+  }
+  
+  .sidebar-card-icon {
+    @apply w-7 h-7 rounded-lg flex items-center justify-center mb-2 bg-gray-100 dark:bg-dark-700 text-gray-600 dark:text-gray-300;
+  }
+  
+  .sidebar-card-icon.active {
+    @apply bg-accent-orange text-white;
+  }
+  
+  .task-card {
+    @apply bg-white dark:bg-darkBg-tertiary rounded-xl shadow-soft border border-gray-200 dark:border-dark-700 p-4 hover:shadow-medium transition-shadow duration-150;
+    min-height: 130px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .kanban-column {
+    @apply bg-gray-100 dark:bg-darkBg-primary rounded-xl p-4 min-h-[600px];
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-darkBg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-dark-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-dark-500;
+}
+
+/* Optimized transitions - only for specific elements that need smooth transitions */
+.task-card,
+.sidebar-card,
+.sidebar-item,
+.btn-primary,
+.btn-secondary,
+.input-field {
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Disable transitions during theme changes to prevent lag */
+.theme-transitioning * {
+  transition: none !important;
+}
